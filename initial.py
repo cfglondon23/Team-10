@@ -1,13 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-# from flask_mail import Mail, Message
 
 import secrets
 
 # Generate a random byte string of length 32
-
-
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -35,4 +32,4 @@ def create_app():
         db.create_all()
      
 
-    return app,mail
+    return app
