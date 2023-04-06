@@ -8,28 +8,8 @@
     <script src="../Scripts/MainPage.js" type="text/javascript"></script>
   </head>
 
-  <body>
-
-        <div>
-            {% for job in totalJobs.values() %}
-            <div>
-                
-                <h2> {{ job.get_name() }}</h2>
-                <div>Date: {{ job.get_date() }}</div>
-                <div>{{ job.get_startTime() }} to {{ job.get_endTime() }}</div> 
-                <div>Location: {{ job.get_location() }}</div> 
-                <div>{{ job.get_description() }}</div> 
-            
-          
-                <button onclick="buyHire( {{event.get_id()}} )">
-                    GET JOB!
-                </button>
-        
-
-            </div>
-            {% endfor%}
-        </div>
-
-
+  <body onload="LoadListings();">
+    <div id="Listings">
+    </div>
   </body>
 </html>
