@@ -10,6 +10,7 @@ function LoadListings(){
         let endTime = {{Job.get_endTime()}};
         let Location = {{Job.get_location()}};
         let Description = {{job.get_description()}};
+        let Name = {{job.get_name()}};
     }
 
     */
@@ -21,36 +22,74 @@ function LoadListings(){
           <button onclick="buyHire( {{event.get_id()}} )">
             GET JOB!
           </button>
-
           */
-         /*
-ListingsDiv = document.getElementById("Listings");
-Listing = document.createElement("div");
-Listing.class = "card";
-ListingDetails = document.createElement("div");
-ListingDetails.class = "card-details";
-ListingName = document.createElement("h1");
-Listing
-  
-          echo('<div class="card">');
-          echo('<div class="card-details">');
-          echo('<p class="text-title">'.$row['category_name'].'</p>');
-          echo('</div>');
-          echo('<button class="card-button" type="submit" name="categoryID" value="'.$row['ID'].'">');
+  for(var i=0;i<5;i++){
 
-          echo($row['category_name']);
-          echo('</button></div>');
+    let Name = "Name";
+    let Date = "Date";
+    let startTime = "Start Time";
+    let endTime = "End Time";
+    let Location = "Location";
+    let Description = "Description";
+
+    ListingsDiv = document.getElementById("Listings");
+    Listing = document.createElement("div");
+    Listing.className = "card";
+
+    ListingDetails = document.createElement("div");
+    ListingDetails.className = "card-details";
+
+    ListingName = document.createElement("h1");
+    ListingName.innerText = Name;
+    ListingName.className = "text";
+    
+    ListingDetails.appendChild(document.createTextNode(Description));
+    ListingDetails.appendChild(document.createTextNode("<br>"));
+    ListingDetails.appendChild(document.createTextNode(Location));
+    ListingDetails.appendChild(document.createTextNode(Date));
+    ListingDetails.appendChild(document.createTextNode(startTime));
+    ListingDetails.appendChild(document.createTextNode(endTime));
+
+  /*
+    ListingDescription = document.createElement("p");
+    ListingDescription.className = "text-title";
+    ListingDescription.innerText = Description;
+    ListingDescription.className = "text";
+    
+    ListingLocation = document.createElement("p");
+    ListingLocation.innerText = Location;
+    ListingLocation.className = "text";
+
+    ListingDate = document.createElement("p");
+    ListingDate.innerText = Date;
+
+    ListingStart = document.createElement("p");
+    ListingStart.innerText = startTime;
+
+    ListingEnd = document.createElement("p");
+    ListingEnd.innerText = endTime;
+    */
+
+    ListingButton = document.createElement("button");
+    ListingButton.className = "card-button";
+    ListingButton.innerText = "Get Job";
+    ListingButton.setAttribute("onclick","RedirectPage()")
 
 
-          round_paragraph = document.getElementById("score-display");
-
-  round_paragraph.innerHTML = "";
-  round_text = document.createElement("div");
-  round_text.id = "round-text";
-  round_text.innerText = "Round: " + round;
-
-  round_paragraph.appendChild(round_text);
+    Listing.appendChild(ListingDetails);
+    ListingDetails.appendChild(ListingName);
+    /*
+    ListingDetails.appendChild(ListingDescription);
+    ListingDetails.appendChild(ListingLocation);
+    ListingDetails.appendChild(ListingDate);
+    ListingDetails.appendChild(ListingStart);
+    ListingDetails.appendChild(ListingEnd);
+    */
+    ListingDetails.appendChild(ListingButton);
+    ListingsDiv.appendChild(Listing);
+  }
 }
-*/
-  return null;
-};
+
+function RedirectPage(){
+  location.href="DescriptionPage.html";
+}
