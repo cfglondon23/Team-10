@@ -8,8 +8,28 @@
     <script src="../Scripts/MainPage.js" type="text/javascript"></script>
   </head>
 
-  <body onload="LoadListings();">
-    <div class="Listings">
-    </div>
+  <body>
+
+        <div>
+            {% for listings in totalListings.values() %}
+            <div>
+                
+                <h2> {{ listing.get_name() }}</h2>
+                <div>Date: {{ listing.get_date() }}</div>
+                <div>{{ listing.get_startTime() }} to {{ listing.get_endTime() }}</div> 
+                <div>Location: {{ listing.get_location() }}</div> 
+                <div>{{ listing.get_description() }}</div> 
+            
+                {% if current_user.is_authenticated and not  event.isFull()%}
+                <button onclick="buyHire( {{event.get_id()}} )">
+                    GET JOB!
+                </button>
+                {% endif%}
+
+            </div>
+            {% endfor%}
+        </div>
+
+
   </body>
 </html>
