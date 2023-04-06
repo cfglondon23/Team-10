@@ -13,7 +13,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-app,mail=create_app()
+app = create_app()
 
 
 class Volunteer(db.Model):
@@ -24,7 +24,7 @@ class Volunteer(db.Model):
     password = db.Column(db.String, unique=False, primary_key=False,nullable=False)
     location = db.Column(db.String, unique=False, primary_key=False,nullable=False)
     description = db.Column(db.String, unique=False, primary_key=False,nullable=False)
-    
+    # jobs = db.relationship('Job', backref='volunteer', lazy=True, cascade="all,delete", foreign_keys="[Job.volunteerID]")
     jobs = db.relationship('Job', backref='volunteer', lazy=True, cascade="all,delete")
     hire = db.relationship('Hires', backref='volunteer', lazy=True, cascade="all,delete")
     
@@ -34,28 +34,72 @@ class School(db.Model):
     email = db.Column(db.String, unique=True, primary_key=False,nullable=False)
     password = db.Column(db.String, unique=False, primary_key=False,nullable=False)
     location = db.Column(db.String, unique=False, primary_key=False,nullable=False)
-    
     jobs = db.relationship('Job', backref='school', lazy=True, cascade="all,delete")
-    # hire = db.relationship('Hires', backref='user', lazy=True, cascade="all,delete")
     
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True,nullable=False)
     name = db.Column(db.String, unique=True, primary_key=False,nullable=False)
-    # capacity = db.Column(db.Integer, unique=False, primary_key=False,nullable=False)
     location = db.Column(db.String, unique=False, primary_key=False,nullable=False)
     description = db.Column(db.String, unique=False, primary_key=False,nullable=False)
     date = db.Column(db.DateTime, unique=False, primary_key=False,nullable=False)
     startTime = db.Column(db.DateTime, unique=False, primary_key=False,nullable=False)
     endTime = db.Column(db.DateTime, unique=False, primary_key=False,nullable=False)
     ownerID = db.Column(db.Integer, db.ForeignKey('school.id'), primary_key=False, nullable=False)
-    
-    hire = db.relationship('Hires', backref='event', lazy=True, cascade="all,delete")
-    
-    
+    volunteerID = db.Column(db.Integer, db.ForeignKey('volunteer.id'), primary_key=False, nullable=True)
+    hire = db.relationship('Hires', backref='job', lazy=True, cascade="all,delete")
+
 class Hires(db.Model):
     id = db.Column(db.Integer, primary_key=True,nullable=False)
     volunteerID = db.Column(db.Integer, db.ForeignKey('volunteer.id'), primary_key=False,nullable=False)
     jobID = db.Column(db.Integer, db.ForeignKey('job.id'), primary_key=False,nullable=False)
+
+ 
+ 
+
+
+# class Volunteer(db.Model):
+#     id = db.Column(db.Integer, primary_key=True,nullable=False)
+#     firstName = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     surname = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     email = db.Column(db.String, unique=True, primary_key=False,nullable=False)
+#     password = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     location = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     description = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     jobs = db.relationship('Job', backref='volunteer', lazy=True, cascade="all,delete", foreign_keys=[job.volunteerID])
+#     # jobs = db.relationship('Job', backref='volunteer', lazy=True, cascade="all,delete")
+#     hire = db.relationship('Hires', backref='volunteer', lazy=True, cascade="all,delete")
+    
+# class School(db.Model):
+#     id = db.Column(db.Integer, primary_key=True,nullable=False)
+#     name = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     email = db.Column(db.String, unique=True, primary_key=False,nullable=False)
+#     password = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     location = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+    
+#     jobs = db.relationship('Job', backref='school', lazy=True, cascade="all,delete")
+#     # hire = db.relationship('Hires', backref='user', lazy=True, cascade="all,delete")
+    
+# class Job(db.Model):
+#     id = db.Column(db.Integer, primary_key=True,nullable=False)
+#     name = db.Column(db.String, unique=True, primary_key=False,nullable=False)
+#     # capacity = db.Column(db.Integer, unique=False, primary_key=False,nullable=False)
+#     location = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     description = db.Column(db.String, unique=False, primary_key=False,nullable=False)
+#     date = db.Column(db.DateTime, unique=False, primary_key=False,nullable=False)
+#     startTime = db.Column(db.DateTime, unique=False, primary_key=False,nullable=False)
+#     endTime = db.Column(db.DateTime, unique=False, primary_key=False,nullable=False)
+#     ownerID = db.Column(db.Integer, db.ForeignKey('school.id'), primary_key=False, nullable=False)
+#     volunteerID = db.Column(db.Integer, db.ForeignKey('volunteer.id'), primary_key=False, nullable=True)
+    
+#     # volunteerID = db.Column(db.Integer, db.ForeignKey('volunteer.id'), primary_key=False, nullable=True)
+#     # volunteer = db.relationship('Volunteer', backref='job')
+#     hire = db.relationship('Hires', backref='job', lazy=True, cascade="all,delete")
+
+    
+# class Hires(db.Model):
+#     id = db.Column(db.Integer, primary_key=True,nullable=False)
+#     volunteerID = db.Column(db.Integer, db.ForeignKey('volunteer.id'), primary_key=False,nullable=False)
+#     jobID = db.Column(db.Integer, db.ForeignKey('job.id'), primary_key=False,nullable=False)
     
 
 def loginVolunteer(email: str, password: str) ->  None or str:

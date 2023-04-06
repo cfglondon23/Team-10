@@ -1,14 +1,14 @@
 from flask import Flask, render_template, redirect, request, url_for, flash,session, send_from_directory
 from flask_login import LoginManager, login_user,current_user,logout_user,login_required
-from initial import login_manager,create_app, Message
+from initial import login_manager,create_app
 import json
-from models import Volunteer, VolunteerObject, JobObject, Schools, Hires, loginSchool, loginVolunteer
+from models import Volunteer, VolunteerObject, JobObject, School, Hires, loginSchool, loginVolunteer
 
 
 app = create_app()
 
 with app.app_context():
-    JobObject.loadTotalJobs()
+    JobObject.loadtotalJobs()
 
 
 # Define a function to load a user given their ID
@@ -23,7 +23,7 @@ def load_user(user_id):
 @app.route('/', methods =['POST','GET'])
 def MainPage():
     
-    return render_template('MainPage.html', title="Events",  )
+    return render_template('MainPage.html', title="Listings", totalJobs=JobObject.totalJobs)
       
       
 @app.route('/Signup',methods =['POST','GET'])
@@ -71,10 +71,10 @@ def Login():
     return render_template('Login.html',title="Login")
 
 
-@app.route('/MainPage',methods =['POST','GET'])
-def MainPage():
+# @app.route('/MainPage',methods =['POST','GET'])
+# def MainPage():
     
     
     
     
-    return render_template('MainPage.html',title="Listings")
+#     return render_template('MainPage.html',title="Listings")
