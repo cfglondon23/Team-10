@@ -448,42 +448,42 @@ class SchoolObject():
         def addJob(self, jobID: int):
             self._jobs[jobID] = JobObject.totaljobs[jobID]
 
-        #     # Creates an Event object with details provided by the details dictionary, stores it in a database, creates an JobObject with the same details, adds the Event ID to the instance of the class, and returns the JobObject.
-        # def createJob(self, details):
-        #     startTime = datetime.strptime(details["starttime"], "%H:%M")
-        #     endTime = datetime.strptime(details["endtime"], "%H:%M")
-        #     duration = endTime - startTime
-        #     date = datetime.strptime(details["date"], "%Y-%m-%d")
+            # Creates an Event object with details provided by the details dictionary, stores it in a database, creates an JobObject with the same details, adds the Event ID to the instance of the class, and returns the JobObject.
+        def createJob(self, details):
+            startTime = datetime.strptime(details["starttime"], "%H:%M")
+            endTime = datetime.strptime(details["endtime"], "%H:%M")
+            duration = endTime - startTime
+            date = datetime.strptime(details["date"], "%Y-%m-%d")
 
-        #     job = Job(
-        #         name = details["name"],
-        #         description = details["description"],
-        #         location = details["location"],
-        #         startTime = startTime,
-        #         endTime = endTime,
-        #         date = date,
-        #         duration = duration.total_seconds(),
-        #         capacity = details["capacity"],
-        #         ownerID = self.__id
-        #     )
-        #     db.session.add(job)
-        #     db.session.commit()
+            job = Job(
+                name = details["name"],
+                description = details["description"],
+                location = details["location"],
+                startTime = startTime,
+                endTime = endTime,
+                date = date,
+                duration = duration.total_seconds(),
+                capacity = details["capacity"],
+                ownerID = self.__id
+            )
+            db.session.add(job)
+            db.session.commit()
             
-        #     JobObject = JobObject(
-        #         id = job.id,
-        #         name = job.name,
-        #         location = job.location,
-        #         description = job.description,
-        #         startTime = job.startTime,
-        #         endTime = job.endTime,
-        #         duration = job.duration,
-        #         date = job.date,
-        #         # capacity = job.capacity,
-        #         ownerID = job.ownerID,
-        #     )
-        #     self.addJob(job.id)
+            JobObject = JobObject(
+                id = job.id,
+                name = job.name,
+                location = job.location,
+                description = job.description,
+                startTime = job.startTime,
+                endTime = job.endTime,
+                duration = job.duration,
+                date = job.date,
+                # capacity = job.capacity,
+                ownerID = job.ownerID,
+            )
+            self.addJob(job.id)
             
-        #     return JobObject
+            return JobObject
     
     
         # Define a method to add an organiser to the current event
