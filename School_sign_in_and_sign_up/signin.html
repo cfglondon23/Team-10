@@ -15,6 +15,9 @@
 <body>
 
     <div class="main">
+        <div>
+            <button class="form-submit" onclick="window.location.href = '../HTML/MainPage.html';">Go straight to landing page</button>
+        </div>
 
         <section class="sign-in">
             <div class="container">
@@ -39,13 +42,8 @@
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
-                            
-                            <script>
-                                function signIn() {location.href="signup.html";}
-                            </script>
-
                             <div class="form-group form-button">
-                                <input type="submit" onclick="signIn()" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
                         </form>
                         <div class="social-login">
