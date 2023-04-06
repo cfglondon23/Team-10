@@ -18,15 +18,46 @@ function LoadListings(){
             GET JOB!
           </button>
           */
+  
+  dummy_jobs = [
+    {
+                "id": 1,
+                "name": "Charity Run",
+                "location": "Central Park",
+                "description": "Help us organize a charity run in Central Park.",
+                "date": "28th",
+                "startTime": "9am",
+                "endTime": "10pm"
+    },
+    {
+                "id": 2,
+                "name": "Food Drive",
+                "location": "New York City Food Bank",
+                "description": "We need volunteers to help distribute food to families in need.",
+                "date": "28th",
+                "startTime": "9am",
+                "endTime": "10pm"
+    },
+    {
+                "id": 3,
+                "name": "Beach Cleanup",
+                "location": "Rockaway Beach",
+                "description": "Help us keep our beaches clean!",
+                "date": "28th",
+                "startTime": "9am",
+                "endTime": "10pm"
+    }
+  ]
          
-  for(var i=0;i<10;i++){
+  for(var i=0;i<=dummy_jobs.length;i++){
+    let dummy_job = dummy_jobs[i];
 
-    let Name = "Name";
-    let Date = "Date";
-    let startTime = "Start Time";
-    let endTime = "End Time";
-    let Location = "Location";
-    let Description = "Description";
+    let Name = dummy_job["name"];
+    let Date = "Date: "+dummy_job["date"];
+    let startTime = "Start Time: "+dummy_job["startTime"];
+    let endTime = "End Time: "+dummy_job["endTime"];
+    let Location = "Location: "+dummy_job["location"];
+    let Description = "Description: "+dummy_job["description"];
 
     ListingsDiv = document.getElementById("Listings");
     Listing = document.createElement("div");
@@ -82,5 +113,5 @@ function LoadListings(){
 }
 
 function RedirectPage(){
-  location.href="DescriptionPage.html";
+  location.href="job.html";
 }
