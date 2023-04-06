@@ -23,67 +23,73 @@ function LoadListings(){
             GET JOB!
           </button>
           */
+  for(var i=0;i<5;i++){
+
+    let Name = "Name";
+    let Date = "Date";
+    let startTime = "Start Time";
+    let endTime = "End Time";
+    let Location = "Location";
+    let Description = "Description";
+
+    ListingsDiv = document.getElementById("Listings");
+    Listing = document.createElement("div");
+    Listing.className = "card";
+
+    ListingDetails = document.createElement("div");
+    ListingDetails.className = "card-details";
+
+    ListingName = document.createElement("h1");
+    ListingName.innerText = Name;
+    ListingName.className = "text";
     
-  let Name = "Name";
-  let Date = "Date";
-  let startTime = "Start Time";
-  let endTime = "End Time";
-  let Location = "Location";
-  let Description = "Description";
-
-  ListingsDiv = document.getElementById("Listings");
-  Listing = document.createElement("div");
-  Listing.className = "card";
-
-  ListingDetails = document.createElement("div");
-  ListingDetails.className = "card-details";
-
-  ListingName = document.createElement("h1");
-  ListingName.innerText = Name;
-  
-
-  ListingDescription = document.createElement("p");
-  ListingDescription.className = "text-title";
-  ListingDescription.innerText = Description;
-  
-  ListingLocation = document.createElement("p");
-  ListingLocation.innerText = Location;
-
-  ListingDate = document.createElement("p");
-  ListingDate.innerText = Date;
-
-  ListingStart = document.createElement("p");
-  ListingStart.innerText = startTime;
-
-  ListingEnd = document.createElement("p");
-  ListingEnd.innerText = endTime;
-
-
-  Listing.appendChild(ListingDetails);
-  ListingDetails.appendChild(ListingName);
-  ListingDetails.appendChild(ListingDescription);
-  ListingDetails.appendChild(ListingLocation);
-  ListingDetails.appendChild(ListingDate);
-  ListingDetails.appendChild(ListingStart);
-  ListingDetails.appendChild(ListingEnd);
-  ListingsDiv.appendChild(Listing);
+    ListingDetails.appendChild(document.createTextNode(Description));
+    ListingDetails.appendChild(document.createTextNode("<br>"));
+    ListingDetails.appendChild(document.createTextNode(Location));
+    ListingDetails.appendChild(document.createTextNode(Date));
+    ListingDetails.appendChild(document.createTextNode(startTime));
+    ListingDetails.appendChild(document.createTextNode(endTime));
 
   /*
-          echo('<div class="card">');
-          echo('<div class="card-details">');
-          echo('<p class="text-title">'.$row['category_name'].'</p>');
-          echo('</div>');          
-          echo('<button class="card-button" type="submit" name="categoryID" value="'.$row['ID'].'">');
+    ListingDescription = document.createElement("p");
+    ListingDescription.className = "text-title";
+    ListingDescription.innerText = Description;
+    ListingDescription.className = "text";
+    
+    ListingLocation = document.createElement("p");
+    ListingLocation.innerText = Location;
+    ListingLocation.className = "text";
 
-          echo($row['category_name']);
-          echo('</button></div>');
+    ListingDate = document.createElement("p");
+    ListingDate.innerText = Date;
 
+    ListingStart = document.createElement("p");
+    ListingStart.innerText = startTime;
 
-  round_paragraph.innerHTML = "";
-  round_text = document.createElement("div");
-  round_text.id = "round-text";
-  round_text.innerText = "Round: " + round;
-
-  round_paragraph.appendChild(round_text);
+    ListingEnd = document.createElement("p");
+    ListingEnd.innerText = endTime;
     */
+
+    ListingButton = document.createElement("button");
+    ListingButton.className = "card-button";
+    ListingButton.innerText = "Get Job";
+    ListingButton.setAttribute("onclick","RedirectPage()")
+
+
+    Listing.appendChild(ListingDetails);
+    ListingDetails.appendChild(ListingName);
+    /*
+    ListingDetails.appendChild(ListingDescription);
+    ListingDetails.appendChild(ListingLocation);
+    ListingDetails.appendChild(ListingDate);
+    ListingDetails.appendChild(ListingStart);
+    ListingDetails.appendChild(ListingEnd);
+    */
+    ListingDetails.appendChild(ListingButton);
+    ListingsDiv.appendChild(Listing);
+  }
+}
+
+function RedirectPage(){
+  location.href="DescriptionPage.html";
 }

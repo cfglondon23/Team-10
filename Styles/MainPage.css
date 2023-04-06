@@ -2,10 +2,10 @@
     width: 10rem;
     height: 13rem;
     border-radius: 0.5rem;
-    background: #b00808;
+    background: #fffefe;
     position: relative;
     padding: 1.5rem;
-    border: 2px solid #063ac7;
+    border: 2px solid #4d75e3;
     transition: 0.5s ease-out;
     overflow: visible;
     display: inline-block;
@@ -53,4 +53,9 @@
   justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: row;
+}
+
+.text{
+  padding-top: 0px;
+  margin-top: 0px;
 }
