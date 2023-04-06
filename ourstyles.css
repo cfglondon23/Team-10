@@ -181,3 +181,14 @@ margin: 0;
 .view-applicants-btn:hover {
     background-color: #0056b3;
 }
+
+.slideshow-container {
+    max-width: 70%;
+    margin: 20px auto;
+    position: relative;
+}
+
+.job-description-container {
+    max-width: 70%;
+    margin: 20px auto;
+}
