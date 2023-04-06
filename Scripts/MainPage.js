@@ -14,13 +14,16 @@ function LoadListings(){
     }
 
     */
+
+
+
+
     /*
           <button onclick="buyHire( {{event.get_id()}} )">
             GET JOB!
           </button>
           */
-         
-  for(var i=0;i<10;i++){
+  for(var i=0;i<5;i++){
 
     let Name = "Name";
     let Date = "Date";
@@ -39,7 +42,15 @@ function LoadListings(){
     ListingName = document.createElement("h1");
     ListingName.innerText = Name;
     ListingName.className = "text";
-  
+    
+    ListingDetails.appendChild(document.createTextNode(Description));
+    ListingDetails.appendChild(document.createTextNode("<br>"));
+    ListingDetails.appendChild(document.createTextNode(Location));
+    ListingDetails.appendChild(document.createTextNode(Date));
+    ListingDetails.appendChild(document.createTextNode(startTime));
+    ListingDetails.appendChild(document.createTextNode(endTime));
+
+  /*
     ListingDescription = document.createElement("p");
     ListingDescription.className = "text-title";
     ListingDescription.innerText = Description;
@@ -51,16 +62,13 @@ function LoadListings(){
 
     ListingDate = document.createElement("p");
     ListingDate.innerText = Date;
-    ListingDate.className = "text";
 
     ListingStart = document.createElement("p");
     ListingStart.innerText = startTime;
-    ListingStart.className = "text";
 
     ListingEnd = document.createElement("p");
     ListingEnd.innerText = endTime;
-    ListingEnd.className = "text";
-  
+    */
 
     ListingButton = document.createElement("button");
     ListingButton.className = "card-button";
@@ -70,13 +78,13 @@ function LoadListings(){
 
     Listing.appendChild(ListingDetails);
     ListingDetails.appendChild(ListingName);
-    
+    /*
     ListingDetails.appendChild(ListingDescription);
     ListingDetails.appendChild(ListingLocation);
     ListingDetails.appendChild(ListingDate);
     ListingDetails.appendChild(ListingStart);
     ListingDetails.appendChild(ListingEnd);
-    
+    */
     ListingDetails.appendChild(ListingButton);
     ListingsDiv.appendChild(Listing);
   }
@@ -84,4 +92,5 @@ function LoadListings(){
 
 function RedirectPage(){
   location.href="DescriptionPage.html";
+  
 }
