@@ -5,47 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="leaderboard.js"></script>
+
     <title>Leader Board</title>
 </head>
-<body>
+<body onload="LoadRankings()">
     <div class="container">
         <p>Leaderboard</p>
-        <div class="time">
-           <span>Last 30 days</span>
-           <span>All-Time</span>
-        </div>
 
         <div class="board">
 
             <div class="Leader">
                    <span class="no">1</span>
                    <img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" alt="" class="pic">
-                   <Span class="Name">Mahim Nosor</Span>
+                   <Span class="Name" id="Rank1"></Span>
             
             </div>
 
            <div class="Leader">
                <span class="no">2</span>
                <img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" alt="" class="pic">
-               <Span class="Name">Adam Abbassi</Span>
+               <Span class="Name" id="Rank2"></Span>
            </div>
 
            <div class="Leader">
                <span class="no">3</span>
                <img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" alt="" class="pic">
-               <Span class="Name">Na Wang</Span>
+               <Span class="Name" id="Rank3"></Span>
            </div>
 
            <div class="Leader">
                    <span class="no">4</span>
                    <img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" alt="" class="pic">
-                   <Span class="Name">Rachel</Span>
+                   <Span class="Name" id="Rank4"></Span>
            </div>
 
            <div class="Leader">
                <span class="no">5</span>
                <img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" alt="" class="pic">
-               <Span class="Name">Mo</Span>
+               <Span class="Name" id="Rank5"></Span>
            </div>
 
         </div>
