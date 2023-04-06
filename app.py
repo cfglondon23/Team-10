@@ -3,6 +3,43 @@ from flask_login import LoginManager, login_user,current_user,logout_user,login_
 from initial import login_manager,create_app
 import json
 from models import Volunteer, VolunteerObject, JobObject, School, Hires, loginSchool, loginVolunteer
+from datetime import datetime
+
+dummy_jobs = [
+    {
+        "id": 1,
+        "name": "Charity Run",
+        "location": "Central Park",
+        "description": "Help us organize a charity run in Central Park.",
+        "date": datetime(2023, 5, 10),
+        "startTime": datetime(2023, 5, 10, 8, 0),
+        "endTime": datetime(2023, 5, 10, 12, 0),
+        "ownerID": 1,
+        "volunteerID": None
+    },
+    {
+        "id": 2,
+        "name": "Food Drive",
+        "location": "New York City Food Bank",
+        "description": "We need volunteers to help distribute food to families in need.",
+        "date": datetime(2023, 6, 15),
+        "startTime": datetime(2023, 6, 15, 10, 0),
+        "endTime": datetime(2023, 6, 15, 14, 0),
+        "ownerID": 2,
+        "volunteerID": None
+    },
+    {
+        "id": 3,
+        "name": "Beach Cleanup",
+        "location": "Rockaway Beach",
+        "description": "Help us keep our beaches clean!",
+        "date": datetime(2023, 7, 20),
+        "startTime": datetime(2023, 7, 20, 9, 0),
+        "endTime": datetime(2023, 7, 20, 12, 0),
+        "ownerID": 3,
+        "volunteerID": None
+    }
+]
 
 
 app = create_app()
@@ -23,8 +60,8 @@ def load_user(user_id):
 @app.route('/', methods =['POST','GET'])
 def MainPage():
     
-    return render_template('MainPage.html', title="Listings", totalJobs=JobObject.totalJobs)
-      
+    return render_template('MainPage.html', totalJobs=dummy_jobs)
+# totalJobs=JobObject.totalJobs
       
 @app.route('/Signup',methods =['POST','GET'])
 def register():
